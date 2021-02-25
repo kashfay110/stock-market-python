@@ -4,6 +4,7 @@ from sklearn.linear_model import LinearRegression
 from sklearn.svm import SVR
 from sklearn.model_selection import train_test_split
 import pandas as pd
+from sklearn.metrics import mean_squared_error
 
 # Get the stock data
 #df = quandl.get("WIKI/FB")
@@ -39,6 +40,7 @@ y = y[:-forecast_out]
 
 # Split the data into 80% training and 20% testing
 x_train, x_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+print(x_train.shape, x_test.shape, y_train.shape, y_test.shape)
 
 # Create and train the Support Vector Machine (Regressor)
 svr_rbf = SVR(kernel='rbf', C=1e3, gamma=0.1)
@@ -71,3 +73,14 @@ print("svm confidence: ", svm_confidence)
 # Best possible score is 1.0
 lr_confidence = lr.score(x_test, y_test)
 print("lr confidence: ", lr_confidence)
+
+# Mean Squared Error for SVR
+y_pred_svr = svr_rbf.predict(x_test)
+mse_svr = mean_squared_error(y_test, y_pred_svr)
+print(f'The MSE for the SVR algorithm is: {mse_svr}')
+
+# Mean Squared Error for LR
+y_pred_lr = lr.predict(x_test)
+mse_lr = mean_squared_error(y_test, y_pred_lr)
+print(f'The MSE for the LR algorithm is: {mse_lr}')
+
