@@ -95,5 +95,4 @@ rmse_lr = mean_squared_error(y_test, y_pred_lr, squared=False)
 print(f'The RMSE for the LR algorithm is: {rmse_lr}')
 
 
-# test
 
