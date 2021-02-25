@@ -84,3 +84,5 @@ y_pred_lr = lr.predict(x_test)
 mse_lr = mean_squared_error(y_test, y_pred_lr)
 print(f'The MSE for the LR algorithm is: {mse_lr}')
 
+# test
+
