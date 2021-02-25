@@ -57,7 +57,7 @@ x_forecast = np.array(df.drop(['Prediction'],1))[-forecast_out:]
 
 # Print the SVR prediction for the next forecast_out days
 svm_prediction = svr_rbf.predict(x_forecast)
-print(f'The next {forecast_out} days by the SVM model: \n{svm_prediction}')
+print(f'The next {forecast_out} days by the SVR model: \n{svm_prediction}')
 
 # Print the Linear Regression prediction for the next forecast_out days
 lr_prediction = lr.predict(x_forecast)
@@ -66,7 +66,7 @@ print(f'The next {forecast_out} days by the LR model: \n{lr_prediction}')
 # Testing Model: Score returns the coefficient of determination R^2 of the prediction
 # Best possible score is 1.0
 svm_confidence = svr_rbf.score(x_test, y_test)
-print("svm confidence: ", svm_confidence)
+print("svr confidence: ", svm_confidence)
 
 # Testing Model: Score returns the coefficient of determination R^2 of the prediction
 # It provides a measure of how well observed outcomes are replicated by the model, based on the proportion of total variation of outcomes explained by the model
@@ -83,6 +83,17 @@ print(f'The MSE for the SVR algorithm is: {mse_svr}')
 y_pred_lr = lr.predict(x_test)
 mse_lr = mean_squared_error(y_test, y_pred_lr)
 print(f'The MSE for the LR algorithm is: {mse_lr}')
+
+# Root Mean Squared Error for SVR
+y_pred_svr = svr_rbf.predict(x_test)
+rmse_svr = mean_squared_error(y_test, y_pred_svr, squared=False)
+print(f'The RMSE for the SVR algorithm is: {rmse_svr}')
+
+# Root Mean Squared Error for LR
+y_pred_lr = lr.predict(x_test)
+rmse_lr = mean_squared_error(y_test, y_pred_lr, squared=False)
+print(f'The RMSE for the LR algorithm is: {rmse_lr}')
+
 
 # test
 
