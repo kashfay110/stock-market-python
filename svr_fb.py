@@ -7,7 +7,7 @@ import pandas as pd
 
 # Get the stock data
 #df = quandl.get("WIKI/FB")
-df = pd.read_csv (r'dataset/fb.csv')
+df = pd.read_csv (r'dataset/FB.csv')
 # Take a look at data
 #print(df.head())
 
