@@ -71,5 +71,3 @@ print("svm confidence: ", svm_confidence)
 # Best possible score is 1.0
 lr_confidence = lr.score(x_test, y_test)
 print("lr confidence: ", lr_confidence)
-
-#Test
