@@ -107,6 +107,7 @@ mae_lr = mean_absolute_error(y_test, y_pred_lr)
 print(f'The MAE for the LR algorithm is: {mae_lr}')
 
 ##plot the models on a graph to see which has the best fit to original data
+##correct missing values
 plt.figure(figsize=(16,8))
 plt.scatter(##, y_test, color='red', label='Data')
 plt.plot(##, svr_rbf.predict(##), color='green', label='RBF Model')
