@@ -4,7 +4,7 @@ from sklearn.linear_model import LinearRegression
 from sklearn.svm import SVR
 from sklearn.model_selection import train_test_split
 import pandas as pd
-from sklearn.metrics import mean_squared_error, mean_absolute_error
+from sklearn.metrics import mean_squared_error, mean_absolute_error, mean_absolute_percentage_error
 import matplotlib.pyplot as plt
 plt.style.use('fivethirtyeight')
 
@@ -106,10 +106,20 @@ y_pred_lr = lr.predict(x_test)
 mae_lr = mean_absolute_error(y_test, y_pred_lr)
 print(f'The MAE for the LR algorithm is: {mae_lr}')
 
+# Mean Absolute Percentage Error for SVR
+y_pred_svr = svr_rbf.predict(x_test)
+mape_svr = mean_absolute_percentage_error(y_test, y_pred_svr)
+print(f'The MAPE for the SVR algorithm is: {mape_svr}')
+
+# Mean Absolute Percentage Error for LR
+y_pred_lr = lr.predict(x_test)
+mape_lr = mean_absolute_percentage_error(y_test, y_pred_lr)
+print(f'The MAPE for the LR algorithm is: {mape_lr}')
+
 ##plot the models on a graph to see which has the best fit to original data
 ##correct missing values
-plt.figure(figsize=(16,8))
-plt.scatter(##, y_test, color='red', label='Data')
-plt.plot(##, svr_rbf.predict(##), color='green', label='SVR RBF Model')
-plt.legend()
-plt.show()
+# plt.figure(figsize=(16,8))
+# plt.scatter(##, y_test, color='red', label='Data')
+# plt.plot(##, svr_rbf.predict(##), color='green', label='SVR RBF Model')
+# plt.legend()
+# plt.show()
