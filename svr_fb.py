@@ -4,14 +4,16 @@ from sklearn.linear_model import LinearRegression
 from sklearn.svm import SVR
 from sklearn.model_selection import train_test_split
 import pandas as pd
-from sklearn.metrics import mean_squared_error
+from sklearn.metrics import mean_squared_error, mean_absolute_error
+import matplotlib.pyplot as plt
+plt.style.use('fivethirtyeight')
 
 # Get the stock data
 #df = quandl.get("WIKI/FB")
 df = pd.read_csv (r'dataset/FB.csv')
 # Take a look at data
 #print(df.head())
-
+df2 = df[['Date']]
 # Get the Adjusted Close
 df = df[['Adj Close']]
 # Take a look at new data
@@ -94,5 +96,19 @@ y_pred_lr = lr.predict(x_test)
 rmse_lr = mean_squared_error(y_test, y_pred_lr, squared=False)
 print(f'The RMSE for the LR algorithm is: {rmse_lr}')
 
+# Mean Absolute Error for SVR
+y_pred_svr = svr_rbf.predict(x_test)
+mae_svr = mean_absolute_error(y_test, y_pred_svr)
+print(f'The MAE for the SVR algorithm is: {mae_svr}')
 
+# Mean Absolute Error for LR
+y_pred_lr = lr.predict(x_test)
+mae_lr = mean_absolute_error(y_test, y_pred_lr)
+print(f'The MAE for the LR algorithm is: {mae_lr}')
 
+##plot the models on a graph to see which has the best fit to original data
+plt.figure(figsize=(16,8))
+plt.scatter(##, y_test, color='red', label='Data')
+plt.plot(##, svr_rbf.predict(##), color='green', label='RBF Model')
+plt.legend()
+plt.show()
