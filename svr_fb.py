@@ -13,14 +13,14 @@ plt.style.use('fivethirtyeight')
 df = pd.read_csv (r'dataset/FB.csv')
 # Take a look at data
 #print(df.head())
-df2 = df[['Date']]
+
 # Get the Adjusted Close
 df = df[['Adj Close']]
 # Take a look at new data
 #print(df.head())
 
 # A variable for predicting 'forecast_out' days out in future
-forecast_out = 15
+forecast_out = 100
 
 # Create another column (dependent variable) shifted 'forecast_out' units up
 df['Prediction'] = df[["Adj Close"]].shift(-forecast_out)
@@ -42,7 +42,7 @@ y = y[:-forecast_out]
 
 # Split the data into 80% training and 20% testing
 x_train, x_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
-print(x_train.shape, x_test.shape, y_train.shape, y_test.shape)
+# print(x_train.shape, x_test.shape, y_train.shape, y_test.shape)
 
 # Create and train the Support Vector Machine (Regressor)
 svr_rbf = SVR(kernel='rbf', C=1e3, gamma=0.1)
