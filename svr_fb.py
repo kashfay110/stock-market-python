@@ -110,6 +110,6 @@ print(f'The MAE for the LR algorithm is: {mae_lr}')
 ##correct missing values
 plt.figure(figsize=(16,8))
 plt.scatter(##, y_test, color='red', label='Data')
-plt.plot(##, svr_rbf.predict(##), color='green', label='RBF Model')
+plt.plot(##, svr_rbf.predict(##), color='green', label='SVR RBF Model')
 plt.legend()
 plt.show()
