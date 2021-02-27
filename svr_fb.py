@@ -20,7 +20,7 @@ df = df[['Adj Close']]
 #print(df.head())
 
 # A variable for predicting 'forecast_out' days out in future
-forecast_out = 100
+forecast_out = 1
 
 # Create another column (dependent variable) shifted 'forecast_out' units up
 df['Prediction'] = df[["Adj Close"]].shift(-forecast_out)
@@ -43,6 +43,8 @@ y = y[:-forecast_out]
 # Split the data into 80% training and 20% testing
 x_train, x_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
 # print(x_train.shape, x_test.shape, y_train.shape, y_test.shape)
+# train_set = x_train + y_train
+# test_set = x_test + y_test
 
 # Create and train the Support Vector Machine (Regressor)
 svr_rbf = SVR(kernel='rbf', C=1e3, gamma=0.1)
@@ -76,43 +78,39 @@ print("svr confidence: ", svm_confidence)
 lr_confidence = lr.score(x_test, y_test)
 print("lr confidence: ", lr_confidence)
 
-# Mean Squared Error for SVR
+## Creating predicted values for both models
 y_pred_svr = svr_rbf.predict(x_test)
+y_pred_lr = lr.predict(x_test)
+
+# Mean Squared Error for SVR
 mse_svr = mean_squared_error(y_test, y_pred_svr)
 print(f'The MSE for the SVR algorithm is: {mse_svr}')
 
 # Mean Squared Error for LR
-y_pred_lr = lr.predict(x_test)
 mse_lr = mean_squared_error(y_test, y_pred_lr)
 print(f'The MSE for the LR algorithm is: {mse_lr}')
 
 # Root Mean Squared Error for SVR
-y_pred_svr = svr_rbf.predict(x_test)
 rmse_svr = mean_squared_error(y_test, y_pred_svr, squared=False)
 print(f'The RMSE for the SVR algorithm is: {rmse_svr}')
 
 # Root Mean Squared Error for LR
-y_pred_lr = lr.predict(x_test)
 rmse_lr = mean_squared_error(y_test, y_pred_lr, squared=False)
 print(f'The RMSE for the LR algorithm is: {rmse_lr}')
 
 # Mean Absolute Error for SVR
-y_pred_svr = svr_rbf.predict(x_test)
 mae_svr = mean_absolute_error(y_test, y_pred_svr)
 print(f'The MAE for the SVR algorithm is: {mae_svr}')
 
 # Mean Absolute Error for LR
-y_pred_lr = lr.predict(x_test)
 mae_lr = mean_absolute_error(y_test, y_pred_lr)
 print(f'The MAE for the LR algorithm is: {mae_lr}')
 
 # Mean Absolute Percentage Error for SVR
-y_pred_svr = svr_rbf.predict(x_test)
 mape_svr = mean_absolute_percentage_error(y_test, y_pred_svr)
 print(f'The MAPE for the SVR algorithm is: {mape_svr}')
 
 # Mean Absolute Percentage Error for LR
-y_pred_lr = lr.predict(x_test)
 mape_lr = mean_absolute_percentage_error(y_test, y_pred_lr)
 print(f'The MAPE for the LR algorithm is: {mape_lr}')
 
