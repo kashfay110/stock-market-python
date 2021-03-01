@@ -24,7 +24,7 @@ forecast_out = 1
 
 # Create another column (dependent variable) shifted 'forecast_out' units up
 df['Prediction'] = df[["Adj Close"]].shift(-forecast_out)
-#print(df.tail())
+print(df.tail())
 
 # Create the independent dataset
 # Convert the dataframe to numpy array
@@ -116,10 +116,11 @@ print(f'The MAPE for the LR algorithm is: {mape_lr}')
 
 ##plot the models on a graph to see which has the best fit to original data
 ##correct missing values
-# plt.figure(figsize=(16,8))
-# plt.scatter(##, y_test, color='red', label='Data')
-# plt.plot(##, svr_rbf.predict(##), color='green', label='SVR RBF Model')
-# plt.legend()
-# plt.show()
+#plt.figure(figsize=(16,8))
+#plt.scatter(y_pred_svr, x_test, color='red', label='Data')
+#plt.plot(y_pred_svr, color='green', label='SVR RBF Model')
+#plt.plot(, svr_rbf.predict(##), color='green', label='SVR RBF Model')
+#plt.legend()
+print(plt.show())
 
 #
