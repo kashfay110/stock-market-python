@@ -14,7 +14,7 @@ end = dt.datetime(2020,1,1)
 data = web.DataReader(company, 'yahoo', start, end)
 #df = pd.read_csv (r'dataset/FB.csv')
 
-# Prepare Datagit
+# Prepare Data
 scaler = MinMaxScaler(feature_range=(0,1))
 scaled_data = scaler.fit_transform(data['Close'].values.reshape(-1,1))
 
