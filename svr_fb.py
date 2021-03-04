@@ -7,6 +7,7 @@ import pandas as pd
 from sklearn.metrics import mean_squared_error, mean_absolute_error, mean_absolute_percentage_error
 import matplotlib.pyplot as plt
 plt.style.use('fivethirtyeight')
+import mplfinance as mpf
 
 # Get the stock data
 #df = quandl.get("WIKI/FB")
@@ -14,6 +15,8 @@ df = pd.read_csv (r'dataset/FB.csv')
 # Take a look at data
 #print(df.head())
 
+df2 = pd.read_csv (r'dataset/FB.csv')
+#print(df2.head())
 # Get the Adjusted Close
 df = df[['Adj Close']]
 # Take a look at new data
@@ -24,7 +27,7 @@ forecast_out = 1
 
 # Create another column (dependent variable) shifted 'forecast_out' units up
 df['Prediction'] = df[["Adj Close"]].shift(-forecast_out)
-print(df.tail())
+#print(df.tail())
 
 # Create the independent dataset
 # Convert the dataframe to numpy array
@@ -39,6 +42,10 @@ y = np.array(df['Prediction'])
 # Get all of the y values except the last 'forecast_out' rows
 y = y[:-forecast_out]
 #print(y)
+
+z = np.array(df2)
+z = z[:-forecast_out]
+print(z)
 
 # Split the data into 80% training and 20% testing
 x_train, x_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
@@ -114,11 +121,18 @@ print(f'The MAPE for the SVR algorithm is: {mape_svr}')
 mape_lr = mean_absolute_percentage_error(y_test, y_pred_lr)
 print(f'The MAPE for the LR algorithm is: {mape_lr}')
 
+
+df2.Date = pd.to_datetime(df2.Date)
+data = df2.set_index('Date')
+print(mpf.plot(data, type='candle', mav =(20), tight_layout=True, style='yahoo'))
+
+#plt.plot(df2,df)
 ##plot the models on a graph to see which has the best fit to original data
 ##correct missing values
 #plt.figure(figsize=(16,8))
-#plt.scatter(y_pred_svr, x_test, color='red', label='Data')
+#plt.scatter(y_train, x_train, color='red', label='Data')
 #plt.plot(y_pred_svr, color='green', label='SVR RBF Model')
+#plt.hist(mape_svr)
 #plt.plot(, svr_rbf.predict(##), color='green', label='SVR RBF Model')
 #plt.legend()
-print(plt.show())
+#print(plt.show())
