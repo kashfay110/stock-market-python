@@ -126,6 +126,7 @@ df2.Date = pd.to_datetime(df2.Date)
 data = df2.set_index('Date')
 print(mpf.plot(data, type='candle', mav =(20), tight_layout=True, style='yahoo'))
 
+# plot with actual and predicted values
 #plt.plot(df2,df)
 ##plot the models on a graph to see which has the best fit to original data
 ##correct missing values
