@@ -125,6 +125,7 @@ print(f'The MAPE for the LR algorithm is: {mape_lr}')
 df2.Date = pd.to_datetime(df2.Date)
 data = df2.set_index('Date')
 print(mpf.plot(data, type='candle', mav =(20), tight_layout=True, style='yahoo'))
+#print(mpf.plot(y_pred_svr, type='line', tight_layout=True, style='yahoo'))
 
 # plot with actual and predicted values
 #plt.plot(df2,df)
