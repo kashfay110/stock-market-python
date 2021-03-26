@@ -138,3 +138,4 @@ print(mpf.plot(data, type='candle', mav =(20), tight_layout=True, style='yahoo')
 #plt.plot(, svr_rbf.predict(##), color='green', label='SVR RBF Model')
 #plt.legend()
 #print(plt.show())
+
