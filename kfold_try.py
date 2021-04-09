@@ -2,7 +2,7 @@ import quandl
 import numpy as np
 from sklearn.linear_model import LinearRegression
 from sklearn.svm import SVR
-from sklearn.model_selection import train_test_split, cross_val_score, KFold
+from sklearn.model_selection import train_test_split, cross_val_score, StratifiedKFold, KFold
 import pandas as pd
 from sklearn.metrics import mean_squared_error, mean_absolute_error, mean_absolute_percentage_error
 
@@ -58,14 +58,14 @@ print(z)
 x_train, x_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
 cv_kfold = KFold(n_splits=10, random_state=1, shuffle=True)
 
+
 # Create and train the Support Vector Machine (Regressor)
 svr_rbf = SVR(kernel='rbf', C=1e3, gamma=0.1)
 svr_rbf.fit(x_train, y_train)
-train_scores = cross_val_score(svr_rbf, x_train, y_train,cv=cv_kfold)
-test_scores = cross_val_score(svr_rbf, x_test, y_test,cv=cv_kfold)
-
+train_scores = cross_val_score(svr_rbf, X, y,cv=cv_kfold)
 print(train_scores)
-print(test_scores)
+kfold_final = train_scores.mean()
+print(f'Final KFold Average for SVR: {kfold_final}')
 
 #Set x_forecast equal to the last forecast_out rows of the original dat set from Adj. Close column
 x_forecast = np.array(df.drop(['Prediction'],1))[-forecast_out:]
