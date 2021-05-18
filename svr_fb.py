@@ -54,7 +54,6 @@ cv_kfold = KFold(n_splits=5, random_state=1, shuffle=True)
 svr_rbf = SVR(kernel='rbf', C=1e3, gamma=0.1)
 svr_rbf.fit(x_train, y_train)
 cv_scores_svr = cross_val_score(svr_rbf, X, y,cv=cv_kfold)
-
 kfold_final_svr = cv_scores_svr.mean()
 print(f'Final KFold Average for SVR: {kfold_final_svr}')
 
@@ -134,11 +133,11 @@ print(f'The MAPE for the LR algorithm is: {mape_lr}')
 
 
 n_array = numpy.array([])
-new_array = numpy.append(n_array, [mse_svr, mse_lr, rmse_svr, rmse_lr, mae_svr, mae_lr, mape_svr, mape_lr])
-print(new_array)
+new_array = numpy.append(n_array, [kfold_final_svr, kfold_final_lr, mse_svr, mse_lr, rmse_svr, rmse_lr, mae_svr, mae_lr, mape_svr, mape_lr])
+# print(new_array)
 
 new_df = pd.DataFrame (new_array)
 ## save to xlsx file
 
-filepath = f'results/{filename_grab}_results.xlsx'
+filepath = f'results/Consumer Discretionary/{filename_grab}_results.xlsx'
 new_df.to_excel(filepath, index=False)
