@@ -33,10 +33,10 @@
 
 ## Final Report and Discussion:
 - This is all present in the PDF file named **'Complete Report.pdf'**. This contains the full report, including:
--   Introduction
--   Literature Review
--   Methodology
--   Results
--   Discussion
--   Conclusion.
+    - Introduction
+- Literature Review
+- Methodology
+- Results
+- Discussion
+- Conclusion.
 
