@@ -12,6 +12,13 @@
 - SVR (Support Vector Regression)
 - ANN (Articial Neural Network)
 
+### Evaulation Metrics used:
+- MAE (Mean Absolute Error)
+- MAPE (Mean Absolute Percentage Error)
+- MSE (Mean Squared Error)
+- RMSE (Root Mean Squared Error)
+
+
 
 The **dataset** directory contains all the datasets which were used in this project, sorted by the Sectors.
 
