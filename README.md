@@ -24,8 +24,10 @@
 ## Results Location:
 - Raw results for LR and SVR are in the **results/Sectors** directory, sorted by sector name. Results for FB and AML are present in the **results** directory.
 - Raw results for ANN are in the **results-ann/Sectors** directory, sorted by sector name.
-- Raw sorted results for everything, as well as some manipulation of results, are in the excel workbook named **'All Results Final.xlsx'**. Each sector has its own Sheet in the workbook.
--  
-The **dataset** directory contains all the datasets which were used in this project, sorted by the Sectors.
+- Raw sorted results for everything, as well as some manipulation of results, are in the Excel workbook named **'All Results Final.xlsx'**. Each sector has its own sheet in the workbook.
 
-
+## Python Scripts:
+- The python script which was used to predict stock prices for 1,2,3,4,5,10,15 and 30 days into the future, using LR and SVR is **'svr_fb.py'**.
+- The python script which was used to predict stock prices for 1,2,3,4,5,10,15 and 30 days into the future, using ANN is **'svr_ann_collab.ipynb'**.
+- The python script used to merge all the results into one big Excel workbook is **merge.py**.
+- 
