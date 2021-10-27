@@ -21,7 +21,7 @@
 
 ## File Locations:
 ### Dataset:
-- All datasets used are in the **'dataset'** directory, sorted by sector name. The top 10 stocks from each sector at the time were used.
+- All datasets used are in the **'dataset'** directory, sorted by sector name. The top 10 stocks from each sector at the time were used. The datasets were all taken from Yahoo Finance (historical data).
 
 ### Results:
 - Raw results for LR and SVR are in the **'results/Sectors'** directory, sorted by sector name. Results for 'FB' and 'AML' are present in the **'results'** directory.
