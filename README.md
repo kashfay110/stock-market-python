@@ -11,7 +11,7 @@
 ### Machine Learning Techniques used:
 - LR (Linear Regression)
 - SVR (Support Vector Regression)
-- ANN (Articial Neural Network)
+- ANN (Artificial Neural Network)
 
 ### Evaulation Metrics used:
 - MAE (Mean Absolute Error)
